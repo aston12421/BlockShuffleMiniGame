@@ -1,0 +1,8 @@
+name: BS
+version: '${project.version}'
+main: me.aston.bs.BS
+api-version: 1.17
+authors: [ aston ]
+description: block shuffle minigame
+commands:
+  game:
