@@ -1,6 +1,6 @@
 name: BlockShuffle
 version: '${project.version}'
-main: me.aston.blockshuffle.BlockShuffle
+main: me.aston.shuffle.BlockShuffle
 api-version: 1.17
 authors: [ aston ]
 description: block shuffle minigame

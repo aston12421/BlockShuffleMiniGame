@@ -1,7 +1,7 @@
-package me.aston.blockshuffle.commands;
+package me.aston.shuffle.game;
 
-import me.aston.blockshuffle.BlockShuffle;
-import me.aston.blockshuffle.modules.GameStates;
+import me.aston.shuffle.BlockShuffle;
+import me.aston.shuffle.game.GameState;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 public final class GameCommand implements CommandExecutor {
 
     private final BlockShuffle plugin = BlockShuffle.getInstance();
+    private final Game game = plugin.getGame();
 
     public void register() {
         plugin.getCommand("game").setExecutor(this);
@@ -26,7 +27,7 @@ public final class GameCommand implements CommandExecutor {
         }
 
         if (args[0].equalsIgnoreCase("start")) {
-            if (plugin.getGameManager().getState() == GameStates.ACTIVE) {
+            if (game.getGameState() == GameState.ACTIVE) {
                 sender.sendMessage("the game is already active!");
                 return true;
             }
@@ -35,7 +36,7 @@ public final class GameCommand implements CommandExecutor {
         }
 
         if (args[0].equalsIgnoreCase("stop")) {
-            if (plugin.getGameManager().getState() == GameStates.INACTIVE) {
+            if (game.getGameState() == GameState.INACTIVE) {
                 sender.sendMessage("the game has not yet started");
                 return true;
             }

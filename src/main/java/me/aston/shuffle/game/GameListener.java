@@ -1,7 +1,8 @@
-package me.aston.blockshuffle.modules;
+package me.aston.shuffle.game;
 
-import me.aston.blockshuffle.BlockShuffle;
+import me.aston.shuffle.BlockShuffle;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
@@ -12,21 +13,22 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 import java.util.UUID;
 
-public final class GameHandler implements Listener {
+public final class GameListener implements Listener {
 
     private final BlockShuffle plugin = BlockShuffle.getInstance();
+    private final Game game = plugin.getGame();
 
     @EventHandler
     public void onMove(PlayerMoveEvent event) {
-        if (plugin.getGameManager().getState() != GameStates.ACTIVE)
+        if (game.getGameState() != GameState.ACTIVE)
             return;
 
         Player player = event.getPlayer();
 
-        if (!(plugin.getPlayers().containsKey(player.getUniqueId())))
+        if (!(game.getPlayers().containsKey(player.getUniqueId())))
             return;
 
-        GamePlayer gamePlayer = plugin.getPlayers().get(player.getUniqueId());
+        GamePlayer gamePlayer = game.getPlayers().get(player.getUniqueId());
         Block block = player.getLocation().getBlock().getRelative(BlockFace.DOWN);
         if (block.getType() == gamePlayer.getMaterial()) {
             if (!(gamePlayer.hasFoundBlock())) {
@@ -41,13 +43,12 @@ public final class GameHandler implements Listener {
         Player player = event.getPlayer();
         UUID uuid = player.getUniqueId();
 
-        if (plugin.getGameManager().getState() != GameStates.ACTIVE)
+        if (game.getGameState() != GameState.ACTIVE)
             return;
 
-        if (!plugin.getPlayers().containsKey(uuid))
+        if (!game.getPlayers().containsKey(uuid))
             return;
 
-        GamePlayer gamePlayer = plugin.getPlayers().get(uuid);
-        plugin.getGameboardManager().setGameScoreboard(gamePlayer);
+        player.setScoreboard(plugin.getGameboard().getGameScoreboard());
     }
 }

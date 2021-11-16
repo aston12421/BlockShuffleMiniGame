@@ -1,4 +1,4 @@
-package me.aston.blockshuffle.modules;
+package me.aston.shuffle.game;
 
 import org.bukkit.Material;
 

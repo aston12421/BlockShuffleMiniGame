@@ -1,4 +1,4 @@
-package me.aston.blockshuffle.utils;
+package me.aston.shuffle.utils;
 
 public final class Utils {
 
