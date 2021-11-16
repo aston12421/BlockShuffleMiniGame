@@ -1,4 +1,4 @@
-package me.aston.bs.modules;
+package me.aston.blockshuffle.modules;
 
 public enum GameStates {
 

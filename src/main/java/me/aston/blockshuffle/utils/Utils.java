@@ -1,6 +1,6 @@
-package me.aston.bs.utils;
+package me.aston.blockshuffle.utils;
 
-public class Utils {
+public final class Utils {
 
     public static String twoDigitString(int number) {
 

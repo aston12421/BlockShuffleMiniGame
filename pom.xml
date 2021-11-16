@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.aston</groupId>
-    <artifactId>BS</artifactId>
+    <artifactId>BlockShuffle</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>BS</name>
+    <name>BlockShuffle</name>
 
     <description>block shuffle minigame</description>
     <properties>
