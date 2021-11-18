@@ -1,2 +1,3 @@
 # BlockShuffleMiniGame
-block shuffle minigame (very incomplete)
+
+material shuffle minigame (very incomplete)

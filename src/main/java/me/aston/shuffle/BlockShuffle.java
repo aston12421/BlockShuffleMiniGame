@@ -1,23 +1,27 @@
 package me.aston.shuffle;
 
-import me.aston.shuffle.game.GameCommand;
-import me.aston.shuffle.game.*;
+import me.aston.shuffle.game.Game;
+import me.aston.shuffle.game.commands.GameCommand;
+import me.aston.shuffle.game.listeners.GameListener;
+import me.aston.shuffle.game.player.GamePlayerManager;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class BlockShuffle extends JavaPlugin {
 
     private static BlockShuffle instance;
+    private GamePlayerManager gamePlayerManager;
     private Game game;
-    private Gamebaord gamebaord;
-    private GameManager gameManager;
+
+    public static BlockShuffle getInstance() {
+        return instance;
+    }
 
     @Override
     public void onEnable() {
         instance = this;
+        gamePlayerManager = new GamePlayerManager();
         game = new Game();
-        gamebaord = new Gamebaord();
-        gameManager = new GameManager();
 
         registerEvents();
         registerCommands();
@@ -25,7 +29,7 @@ public final class BlockShuffle extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        gameManager.stopGame();
+        getGame().stop();
     }
 
     private void registerCommands() {
@@ -38,19 +42,12 @@ public final class BlockShuffle extends JavaPlugin {
         pluginManager.registerEvents(new GameListener(), this);
     }
 
-    public static BlockShuffle getInstance() {
-        return instance;
+    public GamePlayerManager getGamePlayerManager() {
+        return gamePlayerManager;
     }
 
     public Game getGame() {
-        return this.game;
+        return game;
     }
 
-    public GameManager getGameManager() {
-        return gameManager;
-    }
-
-    public Gamebaord getGameboard() {
-        return gamebaord;
-    }
 }

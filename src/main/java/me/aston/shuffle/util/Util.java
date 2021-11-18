@@ -1,6 +1,6 @@
-package me.aston.shuffle.utils;
+package me.aston.shuffle.util;
 
-public final class Utils {
+public final class Util {
 
     public static String twoDigitString(int number) {
 
